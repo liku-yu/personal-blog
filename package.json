@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "hugo && pagefind --site public --output-subdir pagefind",
+    "search": "pagefind --site public --output-subdir pagefind",
+    "dev": "hugo server",
+    "preview": "hugo && pagefind --site public --output-subdir pagefind"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "pagefind": "^1.5.2",
+    "tailwindcss": "^4.3.3"
+  }
+}

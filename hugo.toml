@@ -1,0 +1,88 @@
+baseURL = 'http://localhost:1313/'
+locale = 'zh'                   # 默认 <html lang>
+defaultContentLanguage = 'zh'    # UI 语言：匹配 i18n/zh.toml
+hasCJKLanguage = true           # 中文内容正确的字数/摘要
+enableEmoji = true
+enableRobotsTXT = true
+title = '我的技术博客'
+theme = 'void'
+
+# Tailwind 需要 hugo_stats.json 来扫描模板中的 class
+[build]
+  writeStats = true
+
+# 允许 Hugo 调用 Tailwind CLI 编译 CSS
+[security.exec]
+  allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
+
+# 参数
+[params]
+  description = '记录技术学习、代码实践与踩坑经验'
+
+  # 社交链接（页脚显示）
+  [params.social]
+    github = "https://github.com/liku-yu"
+    email = "mailto:liyukuwhr@qq.com"
+    CNB = "https://cnb.cool/u/liku-yu"
+
+  # 头像（首页圆形象）
+  [params.avatar]
+    url = "https://github.com/liku-yu.png"  # 使用 GitHub 头像
+
+# 主菜单。identifier 匹配 i18n 键（nav_home, nav_posts...），标签随站点语言
+[[menus.main]]
+  name = 'Home'
+  identifier = 'nav_home'
+  pageRef = '/'
+  weight = 10
+
+[[menus.main]]
+  name = 'Posts'
+  identifier = 'nav_posts'
+  pageRef = '/posts'
+  weight = 20
+
+[[menus.main]]
+  name = 'Tags'
+  identifier = 'nav_tags'
+  pageRef = '/tags'
+  weight = 30
+
+[[menus.main]]
+  name = 'About'
+  identifier = 'nav_about'
+  pageRef = '/about'
+  weight = 40
+
+# 分类法（仅标签）
+[taxonomies]
+  tag = 'tags'
+
+# 代码块（Chroma class 模式，暗/亮自动切换）
+[markup.highlight]
+  noClasses = false
+  lineNos = true
+  lineNumbersInTable = true
+
+# KaTeX：构建时渲染
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['$$', '$$'], ['\\[', '\\]']]
+    inline = [['$', '$'], ['\\(', '\\)']]
+
+# 允许 Markdown 中的原始 HTML（KaTeX 等需要）
+[markup.goldmark]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+# 目录
+[markup.tableOfContents]
+  startLevel = 1
+  endLevel = 6
+  ordered = false
+
+# 图片处理
+[imaging]
+  quality = 85
+  resampleFilter = 'Lanczos'

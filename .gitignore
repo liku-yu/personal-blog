@@ -1,0 +1,19 @@
+# Hugo
+/public
+/resources
+.hugo_build.lock
+hugo_stats.json
+
+# Node (Tailwind)
+/node_modules
+
+# 编辑器 / 系统
+.DS_Store
+*.pem
+*.log
+
+# 环境
+.env*
+
+# 其他
+.vercel

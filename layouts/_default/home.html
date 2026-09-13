@@ -1,0 +1,51 @@
+{{ define "main" }}
+  <div class="w-full max-w-3xl mx-auto flex flex-col items-center px-4">
+    <div class="w-full text-center">
+      {{ with .Site.Params.avatar }}
+      <div class="mx-auto mb-4 w-24 h-24 md:w-28 md:h-28 relative group">
+        <div class="rounded-full overflow-hidden border-2 border-line-soft shadow-sm hover:shadow-md transition-all duration-300 relative">
+          <img src="{{ .url }}" alt="{{ $.Site.Title }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105">
+        </div>
+      </div>
+      {{ end }}
+
+      {{ with .Site.Params.social }}
+      <div class="mb-4 flex items-center justify-center gap-x-5 text-fg-muted">
+        {{ with .github }}
+        <a class="hover:text-accent transition-colors" href="{{ . }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+        </a>
+        {{ end }}
+        {{ with .email }}
+        <a class="hover:text-accent transition-colors" href="{{ . }}" aria-label="邮箱" title="邮箱">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+        </a>
+        {{ end }}
+        {{ with .cnb }}
+        <a class="hover:text-accent transition-colors" href="{{ . }}" target="_blank" rel="noopener" aria-label="CNB" title="CNB">
+          <svg class="h-6 w-6" viewBox="0 0 128 128" fill="currentColor" aria-hidden="true"><path d="M92.1921 14.9719C92.574 13.8404 92.2472 12.5864 91.3586 11.7961C88.3808 9.13975 80.8536 3.545 69.5518 2.71766C56.8951 1.79015 49.0595 5.21823 45.1013 7.75961C43.3939 8.85407 43.2985 11.3398 44.8957 12.5938L77.1377 37.9148C79.9797 40.1446 84.1472 38.8832 85.3075 35.4402L92.1921 14.9719Z"/><path d="M12.7123 90.1294C11.3941 91.0235 10.7993 92.6707 11.2252 94.2178C12.4516 98.6699 16.1051 107.934 26.4742 116.363C36.8434 124.792 49.1108 125.701 54.3541 125.571C55.922 125.534 57.2879 124.492 57.7616 122.978L78.4301 56.8837C79.9209 52.1125 74.6298 48.1094 70.5211 50.8994L12.7123 90.1294Z"/><path d="M27.8184 20.3838C26.805 19.9794 25.6704 20.0461 24.712 20.573C20.886 22.6766 11.0897 29.158 6.03729 42.4734C2.13785 52.7353 3.5111 64.0843 4.58326 69.6346C4.93575 71.4488 6.8304 72.495 8.53411 71.8235L70.5471 47.3595C74.9752 45.612 74.9936 39.2864 70.5728 37.5167L27.8184 20.3838Z"/><path d="M119.809 67.7465C121.6 68.9745 124.053 67.8912 124.365 65.7245C125.188 59.9888 125.9 50.0051 122.614 42.4737C118.233 32.438 110.798 26.2497 107.269 23.7342C106.153 22.9403 104.648 23.0219 103.623 23.9383L87.9741 37.9623C85.4185 40.2514 85.6829 44.3584 88.5102 46.2987L119.809 67.7539V67.7465Z"/><path d="M76.0834 121.284C75.9218 123.15 77.486 124.693 79.3293 124.493C85.2592 123.851 97.4422 121.473 106.57 112.662C115.456 104.088 118.346 93.9074 119.187 89.856C119.414 88.7616 119.143 87.6226 118.445 86.7544L91.0827 52.6332C88.1195 48.938 82.2116 50.7633 81.8004 55.501L76.0797 121.284H76.0834Z"/></svg>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h1 class="text-3xl md:text-4xl font-bold text-fg mb-3">{{ .Site.Title }}</h1>
+      <div class="prose prose-base md:prose-lg mx-auto">
+        {{ .Content }}
+      </div>
+
+      {{ if .Site.Menus.main }}
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        {{ range .Site.Menus.main }}
+        {{- $name := .Name }}
+        {{- with .Identifier }}{{ with T . }}{{ $name = . }}{{ end }}{{ end }}
+        <a href="{{ .URL }}" class="relative px-6 py-2.5 rounded-full text-base text-accent-strong group overflow-hidden">
+          <span class="absolute inset-0 w-full h-full bg-accent-soft opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="relative z-10 transition-colors duration-300">{{ $name }}</span>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

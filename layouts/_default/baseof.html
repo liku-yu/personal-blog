@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{{- /* Single-language site, but each page may declare its own `language` in front matter. */ -}}
+{{- $lang := .Params.language | default site.Language.Locale }}
+<html lang="{{ $lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" class="h-full">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="flex flex-col min-h-screen bg-canvas font-bilingual">
+  <a href="#main-content" class="skip-link">{{ i18n "skip_to_content" | default "Skip to content" }}</a>
+  <header class="fixed top-0 left-0 z-30 w-full bg-surface shadow-sm">
+    <div class="w-full max-w-4xl mx-auto px-6">
+      {{ partial "header.html" . }}
+    </div>
+  </header>
+
+  <div class="flex-1 flex flex-col pt-24">
+    <main id="main-content" class="site-main flex-1 w-full max-w-4xl mx-auto px-8 sm:px-10 overflow-x-auto sm:overflow-visible{{ if .IsHome }} flex items-center justify-center{{ end }}">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+
+  <footer class="w-full max-w-4xl mx-auto px-6 overflow-x-auto sm:overflow-visible">
+    {{ partial "footer.html" . }}
+  </footer>
+</body>
+</html>
