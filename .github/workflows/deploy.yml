@@ -48,7 +48,7 @@ jobs:
         env:
           # 子路径部署：GitHub Pages 项目地址
           # Hugo 读取 HUGO_BASEURL 环境变量覆盖 hugo.toml 里的 baseURL
-          HUGO_BASEURL: https://liku-yu.github.io/-personal-blog/
+          HUGO_BASEURL: https://liku-yu.github.io/personal-blog/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -72,7 +72,7 @@ package.json             # Tailwind CLI + Pagefind 依赖
 
 1. 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**
 2. 之后每次 `git push` 会自动构建（Hugo + Pagefind）并部署
-3. 访问 `https://liku-yu.github.io/-personal-blog/`
+3. 访问 `https://liku-yu.github.io/personal-blog/`
 
 工作流通过 `HUGO_BASEURL` 环境变量注入子路径地址，本地 `hugo.toml` 仍保持 `localhost`。
 
