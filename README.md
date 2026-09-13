@@ -1,4 +1,11 @@
-# Blog 项目指南
+# 我的技术博客
+
+🌐 **在线访问 → [https://liku-yu.github.io/personal-blog/](https://liku-yu.github.io/personal-blog/)**
+
+[![Deploy to GitHub Pages](https://github.com/liku-yu/personal-blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/liku-yu/personal-blog/actions/workflows/deploy.yml)
+[![Hugo](https://img.shields.io/badge/Hugo-extended-FF4088?logo=hugo&logoColor=white)](https://gohugo.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Pagefind](https://img.shields.io/badge/Search-Pagefind-2ea44f)](https://pagefind.app/)
 
 基于 **Hugo + hugo-theme-void** 的纯静态博客（Tailwind CSS v4 技术栈）。
 
