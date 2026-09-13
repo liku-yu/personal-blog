@@ -15,6 +15,11 @@ theme = 'void'
 [security.exec]
   allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
 
+# 关闭 Node 权限模型：部分 Node 版本不支持 --permission 参数
+# （否则 CI 上报 "node: bad option: --permission"）
+[security.node.permissions]
+  disable = true
+
 # 参数
 [params]
   description = '记录技术学习、代码实践与踩坑经验'
