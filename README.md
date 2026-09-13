@@ -66,12 +66,24 @@ package.json             # Tailwind CLI + Pagefind 依赖
 
 ## 部署
 
+### GitHub Pages（已配置自动部署）
+
+已提供 `.github/workflows/deploy.yml`，推送到 `master` 自动构建并发布：
+
+1. 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**
+2. 之后每次 `git push` 会自动构建（Hugo + Pagefind）并部署
+3. 访问 `https://liku-yu.github.io/-personal-blog/`
+
+工作流通过 `HUGO_BASEURL` 环境变量注入子路径地址，本地 `hugo.toml` 仍保持 `localhost`。
+
+### 其他静态托管
+
 ```bash
 npm run build   # 输出 public/（含搜索索引）
 ```
 
-把 `public/` 目录丢到任意静态托管即可（GitHub Pages / Vercel / Nginx…）。
-若部署在子路径，在 `hugo.toml` 设置 `baseURL`。
+把 `public/` 目录丢到任意静态托管即可（Vercel / Netlify / Nginx…）。
+若部署在子路径，构建时用 `HUGO_BASEURL=https://your.site/sub/ npm run build` 覆盖 baseURL。
 
 ## 技术栈
 

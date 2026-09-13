@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  # 推送到 master 分支时自动构建部署
+  push:
+    branches: [master]
+  # 允许在 Actions 页面手动触发
+  workflow_dispatch:
+
+# 部署到 GitHub Pages 所需权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署，新的推送取消排队中的旧任务
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive   # 拉取 themes/void 主题
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.165.0'
+          extended: true          # 主题需要 extended（Tailwind/SCSS）
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build        # hugo + pagefind 搜索索引
+        env:
+          # 子路径部署：GitHub Pages 项目地址
+          # Hugo 读取 HUGO_BASEURL 环境变量覆盖 hugo.toml 里的 baseURL
+          HUGO_BASEURL: https://liku-yu.github.io/-personal-blog/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
