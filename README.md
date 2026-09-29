@@ -90,6 +90,7 @@ npm run build   # 输出 public/（含搜索索引）
 ```
 
 把 `public/` 目录丢到任意静态托管即可（Vercel / Netlify / Nginx…）。
+
 若部署在子路径，构建时用 `HUGO_BASEURL=https://your.site/sub/ npm run build` 覆盖 baseURL。
 
 ## 技术栈
